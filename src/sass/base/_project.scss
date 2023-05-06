@@ -1,0 +1,141 @@
+@use "media" as bp;
+
+
+
+
+
+.card-slider {
+    display: flex;
+    // flex-wrap: nowrap;
+    transition: transform 0.5s ease-in-out;
+}
+
+.card {
+    flex: 0 0 auto;
+    width: 21.5rem;
+    margin-right: 1rem;
+    padding: 1rem;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+}
+
+.card.active {
+    transform: scale(1.1);
+}
+
+.card img {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.card h3 {
+    margin-top: 1rem;
+    font-size: 1.5rem;
+}
+
+.card p {
+    margin-top: 0.5rem;
+    font-size: 1rem;
+    color: #555;
+}
+
+.slider-controls {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.card-slider-container {
+    
+    margin: 0;
+    @include bp.md {
+        margin: 0 auto;
+    }
+}
+
+
+
+.work-container {
+    min-height: 100vh;
+    padding: 100px;
+    overflow: hidden;
+}
+
+/* .card-slider {
+    display: flex;        
+    align-items: center;
+    transition: transform 0.3s ease;
+    transform: translateX(0);
+  }
+  
+  .card {
+    margin-right: 1.5em;
+    padding: 2em;
+    border: 1px solid #ccc;
+    border-radius: 0.5em;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+  
+  .card:last-child {
+    margin-right: 0;
+  }
+  
+  .card.active {
+    transform: scale(1.1);
+    box-shadow: 0 0 1em rgba(0, 0, 0, 0.2);
+  }
+  
+  .card img {
+    width: 100%;
+    max-width: 20em;
+    height: auto;
+  }
+  
+  .slider-controls {
+    display: flex;
+    justify-content: center;
+    margin-top: 1em;
+  } */
+
+.prev-btn,
+.next-btn {
+    padding: 0.5em 1em;
+    margin-right: 1em;
+    font-size: 1.2em;
+    border-radius: 0.5em;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.prev-btn:hover,
+.next-btn:hover {
+    background-color: #0062cc;
+}
+
+.prev-btn:disabled,
+.next-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+
+
+
+
+
+
+
+
+@keyframes throb {
+    100% {
+        opacity: 1;
+        outline: 5px blue;
+        transform: scale(1.2);
+    }
+
+}
