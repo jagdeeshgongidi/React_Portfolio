@@ -2,7 +2,7 @@ import React from "react";
 const Card = ({ title, image, description, isActive, techStack, liveLink, codeLink }) => {
     return (
         <>
-            <img src={image} alt={title} />
+            <img src={image} alt={title} className="project-img" />
             <div className="work-item-data">
                 <h1>{title}</h1>
                 <div className="tech-stack">

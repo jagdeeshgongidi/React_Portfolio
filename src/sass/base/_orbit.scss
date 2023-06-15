@@ -2,27 +2,22 @@
 
 
 
-.skills {
-    display: grid;
-    place-items: center;
-    min-height: 100vh;
-}
-
-@include bp.lg {
-    .skills {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
 
 
 .orbit {
-    --size: 6rem;
     --speed: 120s;
 
-    @include bp.md {
-        --size: 10rem;
+    @include bp.xs {
+        --size: 3rem;
     }
+
+    ;
+
+    @include bp.md {
+        --size: 7rem;
+    }
+
+    ;
 
     .center-image {
         width: var(--size);
@@ -30,6 +25,7 @@
         z-index: 10;
 
         img {
+            width: var(--size);
             position: absolute;
             transition: opacity 500ms;
 
@@ -40,7 +36,6 @@
     }
 
     ul {
-
         display: grid;
         place-items: center;
 
@@ -64,10 +59,11 @@
         --text-bg: blue;
 
         position: absolute;
-        width: 5rem;
+        width: 3rem;
+
 
         @include bp.md {
-            width: 7rem;
+            width: 6rem;
 
         }
 
@@ -81,7 +77,14 @@
         place-items: center;
 
         img {
-            width: 4rem;
+            @include bp.xs {
+                width: 2rem;
+            }
+
+            @include bp.md {
+                width: 4rem;
+            }
+
         }
 
         &:hover {
@@ -100,7 +103,6 @@
             display: grid;
             place-items: center;
             border-radius: inherit;
-
             position: absolute;
             animation: orbit var(--speed) linear reverse infinite,
                 throb 1s var(--throb-delay) ease-in-out infinite alternate;
@@ -116,6 +118,13 @@
             background: var(--text-bg);
             transition: opacity 500ms;
             opacity: 0;
+            font-size: 0.6rem;
+
+            @include bp.md {
+                font-size: 0.8rem;
+            }
+
+            ;
         }
 
         &:hover>p {
@@ -123,70 +132,233 @@
         }
     }
 
+
+
     li:nth-child(1) {
         --icon-bg: var(--blue-light);
         --text-bg: var(--blue-dark);
-        transform: translate(10rem, 0rem);
+
+
+        @include bp.xs {
+            transform: translate(7rem, 0rem);
+        }
+
+        ;
 
         @include bp.md {
             transform: translate(15rem, 0rem);
         }
 
-
+        ;
 
     }
 
     li:nth-child(2) {
         --icon-bg: var(--green-light);
         --text-bg: var(--green-dark);
-        transform: translate(5rem, 10rem);
+
+        @include bp.xs {
+            transform: translate(5rem, 5rem);
+        }
+
+        ;
 
         @include bp.md {
             transform: translate(10rem, 10rem);
         }
+
+        ;
+
+
+
+
+
 
     }
 
     li:nth-child(3) {
         --icon-bg: var(--pink-light);
         --text-bg: var(--pink-dark);
-        transform: translate(0, 15rem);
+
+        @include bp.xs {
+            transform: translate(0rem, 7rem);
+        }
+
+        ;
 
         @include bp.md {
+
             transform: translate(0, 15rem);
         }
+
+        ;
+
+
     }
 
     li:nth-child(4) {
         --icon-bg: var(--red-light);
         --text-bg: var(--red-dark);
-        transform: translate(-10rem, 10rem);
+
+
+        @include bp.xs {
+            transform: translate(-5rem, 5rem);
+        }
+
+        ;
+
+        @include bp.md {
+            transform: translate(-10rem, 10rem);
+        }
+
+        ;
+
+
     }
 
     li:nth-child(5) {
         --icon-bg: var(--brown-light);
         --text-bg: var(--brown-dark);
-        transform: translate(-15rem, 0rem);
+
+        @include bp.xs {
+            transform: translate(-7rem, 0rem);
+        }
+
+        ;
+
+
+        @include bp.md {
+            transform: translate(-15rem, 0rem);
+        }
+
+        ;
+
+
+
     }
 
     li:nth-child(6) {
         --icon-bg: var(--yellow-light);
         --text-bg: var(--yellow-dark);
-        transform: translate(-10rem, -10rem);
+
+
+        @include bp.xs {}
+
+        transform: translate(-5rem, -5rem);
+
+        ;
+
+        @include bp.md {
+            transform: translate(-10rem, -10rem);
+        }
+
+        ;
+
+
+
+
+
+
     }
 
     li:nth-child(7) {
         --icon-bg: var(--purple-light);
         --text-bg: var(--purple-dark);
-        transform: translate(0, -15rem);
+
+
+        @include bp.xs {
+            transform: translate(0rem, -7rem);
+        }
+
+        ;
+
+
+        @include bp.md {
+            transform: translate(0, -15rem);
+        }
+
+
     }
 
     li:nth-child(8) {
         --icon-bg: var(--orange-light);
         --text-bg: var(--orange-dark);
-        transform: translate(10rem, -10rem);
+
+        @include bp.xs {
+            transform: translate(5rem, -5rem);
+        }
+
+        ;
+
+        @include bp.md {
+            transform: translate(10rem, -10rem);
+        }
+
+        ;
+
+
     }
 }
+
+
+
+// @include bp.xs {
+
+
+
+//     .orbit li:nth-child(1) {
+//         --icon-bg: var(--blue-light);
+//         --text-bg: var(--blue-dark);
+
+//     }
+
+//     .orbit li:nth-child(2) {
+//         --icon-bg: var(--green-light);
+//         --text-bg: var(--green-dark);
+
+//     }
+
+//     .orbit li:nth-child(3) {
+//         --icon-bg: var(--pink-light);
+//         --text-bg: var(--pink-dark);
+
+//     }
+
+//     .orbit li:nth-child(4) {
+//         --icon-bg: var(--red-light);
+//         --text-bg: var(--red-dark);
+
+//     }
+
+//     .orbit li:nth-child(5) {
+//         --icon-bg: var(--brown-light);
+//         --text-bg: var(--brown-dark);
+
+//     }
+
+//     .orbit li:nth-child(6) {
+//         --icon-bg: var(--yellow-light);
+//         --text-bg: var(--yellow-dark);
+//     }
+
+//     .orbit li:nth-child(7) {
+//         --icon-bg: var(--purple-light);
+//         --text-bg: var(--purple-dark);
+
+//     }
+
+//     .orbit li:nth-child(8) {
+//         --icon-bg: var(--orange-light);
+//         --text-bg: var(--orange-dark);
+
+//     }
+
+
+// }
+
+;
+
+
 
 @keyframes orbit {
     100% {

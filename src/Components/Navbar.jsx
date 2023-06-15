@@ -34,7 +34,7 @@ function NavBar() {
 
   return (
     <Navbar expand="md" className={scrolled ? "scrolled" : ""} >
-      <Container>
+      <Container className='no-pad'>
         <Navbar.Brand href="#home">
           <img src={jdlogo} alt="logo" />
         </Navbar.Brand>

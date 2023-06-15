@@ -3,23 +3,35 @@
 
 
 
+.work-container {
+    overflow: hidden;
+}
+
 
 .card-slider {
     display: flex;
-    // flex-wrap: nowrap;
-    transition: transform 0.5s ease-in-out;
+    transition: transform 0.3s ease-in-out;
+    gap: 2em;
+
 }
 
+
+
 .card {
-    flex: 0 0 auto;
-    width: 21.5rem;
-    margin-right: 1rem;
-    padding: 1rem;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s ease-in-out;
+    flex: 0 0 400px;
+    margin-right: 20px;
+
+    /* Other styles */
 }
+
+@media (max-width: 768px) {
+    .card {
+        margin-right: 10px;
+        /* Other mobile styles */
+    }
+}
+
+
 
 .card.active {
     transform: scale(1.1);
@@ -49,8 +61,9 @@
 }
 
 .card-slider-container {
-    
+
     margin: 0;
+
     @include bp.md {
         margin: 0 auto;
     }
@@ -58,70 +71,46 @@
 
 
 
-.work-container {
-    min-height: 100vh;
-    padding: 100px;
+.circle-button {
+    display: inline-block;
+    width: 4vw;
+    height: 4vw;
+    border-radius: 50%;
+    background-color: #e12525;
+    position: relative;
     overflow: hidden;
+    margin: 2vw;
 }
 
-/* .card-slider {
-    display: flex;        
-    align-items: center;
-    transition: transform 0.3s ease;
-    transform: translateX(0);
-  }
-  
-  .card {
-    margin-right: 1.5em;
-    padding: 2em;
-    border: 1px solid #ccc;
-    border-radius: 0.5em;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-  }
-  
-  .card:last-child {
-    margin-right: 0;
-  }
-  
-  .card.active {
-    transform: scale(1.1);
-    box-shadow: 0 0 1em rgba(0, 0, 0, 0.2);
-  }
-  
-  .card img {
-    width: 100%;
-    max-width: 20em;
-    height: auto;
-  }
-  
-  .slider-controls {
-    display: flex;
-    justify-content: center;
-    margin-top: 1em;
-  } */
-
-.prev-btn,
-.next-btn {
-    padding: 0.5em 1em;
-    margin-right: 1em;
-    font-size: 1.2em;
-    border-radius: 0.5em;
-    border: none;
-    cursor: pointer;
-    transition: all 0.3s ease;
+.arrow-left,
+.arrow-right {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 25%;
+    height: 25%;
+    background-color: #f0f0f0;
 }
 
-.prev-btn:hover,
-.next-btn:hover {
-    background-color: #0062cc;
+.arrow-left {
+    clip-path: polygon(100% 50%, 0 0, 0 100%);
 }
+
+.arrow-right {
+    clip-path: polygon(0 50%, 100% 0, 100% 100%);
+}
+
+
+
 
 .prev-btn:disabled,
 .next-btn:disabled {
     opacity: 0.5;
     cursor: not-allowed;
 }
+
+
 
 
 

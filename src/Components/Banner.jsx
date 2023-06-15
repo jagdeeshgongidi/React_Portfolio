@@ -1,65 +1,87 @@
 import React from 'react';
-import { useEffect,useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ArrowRightCircle } from 'react-bootstrap-icons';
-import {Container,Row,Col} from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 import headerImg from "../assets/img/header-img.svg";
-
+import 'animate.css';
+import TrackVisibility from 'react-on-screen';
 
 function Banner() {
-    const [loopNum,setLoopNum] =useState(0);
-    const [isDeleting,setIsDeleting] =useState(false);
-    const toRotate=["webdeveloper","webdesigner","python developer"];
-    
-    const [text,setText]=useState('');
-    const [delta,setDelta]=useState(300-Math.random()*100);
-    const period=2000;
+    const [loopNum, setLoopNum] = useState(0);
+    const [isDeleting, setIsDeleting] = useState(false);
+    const toRotate = ["Frontend developer", "Backend", "python developer", "Mern Stack developer"];
 
-    useEffect(() => { 
-        let ticker=setInterval(() => {
+    const [text, setText] = useState('');
+    const [delta, setDelta] = useState(300 - Math.random() * 100);
+    const period = 2000;
+
+    useEffect(() => {
+        let ticker = setInterval(() => {
             tick();
-        },delta);
+        }, delta);
         return () => clearInterval(ticker);
-      },[text]);
+    }, [text]);
 
-      const tick=() =>{
-        let i=loopNum % toRotate.length;
-        let fullText=toRotate[i];
-        let updatedText= isDeleting ? fullText.substring(0,text.length-1) : fullText.substring(0,text.length+1);
+    const tick = () => {
+        let i = loopNum % toRotate.length;
+        let fullText = toRotate[i];
+        let updatedText = isDeleting ? fullText.substring(0, text.length - 1) : fullText.substring(0, text.length + 1);
         setText(updatedText);
         if (isDeleting) {
-            setDelta(prevDelta => prevDelta/2)
+            setDelta(prevDelta => prevDelta / 2)
         }
         if (!isDeleting && updatedText === fullText) {
             setIsDeleting(true);
             setDelta(period);
 
-          }
-          else if (isDeleting && updatedText === ''){
+        }
+        else if (isDeleting && updatedText === '') {
             setIsDeleting(false);
-            setLoopNum(loopNum+1);
+            setLoopNum(loopNum + 1);
             setDelta(500);
-          }
-      }
-  return (
-    <section className="banner" id="home">   
-        <Container> 
-        <Row className='align-items-center'>
+        }
+    }
+    return (
+        <section className="banner" id="home">
+            <Container>
+                <Row className='align-items-center'>
+                    <Col xs={12} md={6} xl={7}>
+                        <TrackVisibility>
+                            {({ isVisible }) =>
+                                <div className={isVisible ? "animate__animated animate__fadeIn" : ""}>
+                                    <span className="tagline">welcome to my portfolio</span>
+                                    <h1 className='hero__heading'>{`Hi I'm Jagadeesh `}<br></br><span className='wrap'> {text} </span></h1>
+                                    <p className='hero__para'>Iam a web developer,I am ambitious and driven. I thrive on challenge and constantly set goals for myself,
+                                        so I have something to strive towards</p>
+                                    <a className="cta" href='#connect'>
+                                        <div>
+                                            <span>
+                                                <p>Lets Connect <ArrowRightCircle className='icon' size={25} /></p>
+                                            </span>
+                                        </div>
+                                        <div>
+                                            <span>
+                                                <p>Thanks ):D</p>
+                                            </span>
+                                        </div>
+                                    </a>
+                                </div>
+                            }
+                        </TrackVisibility>
 
-            <Col xs={12} md={6} xl={7}>
-
-                <span className="tagline">welcome to my portfolio</span>
-                <h1>{`Hi I'm Jagadeesh `} <span className='wrap'> {text} </span></h1>
-                <p>Iam a web developer,I am ambitious and driven. I thrive on challenge and constantly set goals for myself, 
-                so I have something to strive towards</p>
-                <button className="" onClick={ () => console("clicked")}>Lets Connect <ArrowRightCircle size={25}/>  </button>
-            </Col>
-            <Col xs={12} md={6} xl={5}>
-                <img src={headerImg} alt="header img" />
-            </Col>
-        </Row>
-        </Container>
-    </section>
-  );
+                    </Col>
+                    <Col xs={12} md={6} xl={5}>
+                        <TrackVisibility>
+                            {({ isVisible }) =>
+                                <div className={isVisible ? "" : ""}>
+                                    <img src={headerImg} alt="Header Img" className='hero-img' />
+                                </div>}
+                        </TrackVisibility>
+                    </Col>
+                </Row>
+            </Container>
+        </section>
+    );
 }
 
 export default Banner;
